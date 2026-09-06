@@ -36,7 +36,7 @@ representative visual result.
 | `01_images_and_segmentation.ipynb` | Image inspection and 2D/3D segmentation | Modality-specific label checks |
 | `02_object_and_radial_features.ipynb` | Morphology, intensity, texture and radial measurements | Feature interpretation |
 | `03_spatial_graphs.ipynb` | Dense-region graphs and temporal node tracking | Spatial representation |
-| `04_vae_representations.ipynb` | VAE/CVAE embeddings of nuclear crops | Latent embedding |
+| `04_vae_representations.ipynb` | VAE/CVAE embeddings of nuclear crops | Input/reconstruction comparison |
 | `05_feature_tables_and_figures.ipynb` | Filtering, joins and condition-level analysis | Heatmaps and classification |
 
 Start with [the workflow overview](notebooks/00_workflow_overview.ipynb).
@@ -75,9 +75,9 @@ jupyter lab notebooks/
 
 ## Representation and analysis outputs
 
-| Learned image representation | Analysis-ready feature matrix |
+| VAE reconstruction quality | Analysis-ready feature matrix |
 | --- | --- |
-| ![CVAE latent features and reconstruction error](assets/results/vae-latent-diagnostics.png) | ![Standardized feature heatmap](assets/results/screening-heatmap.png) |
+| ![Nuclear crop inputs and VAE reconstructions](assets/results/vae-nuclear-reconstructions.png) | ![Standardized feature heatmap](assets/results/screening-heatmap.png) |
 
 The method packages can also be used independently in experiment-specific
 scripts and notebooks.
