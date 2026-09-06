@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from xml.etree import ElementTree
 
 import sys
@@ -37,3 +38,12 @@ def test_result_resolution_prefers_generated_and_falls_back(tmp_path):
     generated.parent.mkdir(parents=True)
     generated.write_bytes(b"\x89PNG\r\n\x1a\n")
     assert show_result("result.png", root=tmp_path) == generated
+
+
+def test_readme_image_links_are_local_and_resolve():
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    links = re.findall(r"!\[[^]]+\]\(([^)]+)\)", readme)
+    assert len(links) >= 8
+    for relative in links:
+        assert not relative.startswith(("http://", "https://", "/"))
+        assert (ROOT / relative).is_file()

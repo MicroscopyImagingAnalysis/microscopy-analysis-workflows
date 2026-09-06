@@ -6,6 +6,24 @@ learned representations and analysis-ready tables.
 
 ![Microscopy analysis workflow](assets/diagrams/workflow-overview.svg)
 
+## Segmentation tasks
+
+| Brightfield spheroids | RGB transmitted-light spheroids |
+| --- | --- |
+| Raw field, connected labels and morphology-adjusted masks | Original RGB image, HSV-derived signal, object labels and seeds |
+| ![Brightfield spheroid segmentation progression](assets/results/segmentation-progression.png) | ![RGB spheroid segmentation stages](assets/results/rgb-spheroid-segmentation.png) |
+
+| Confocal z-stack nuclei (2D projection) | Fluorescent nuclear masks and intensity strata |
+| --- | --- |
+| DAPI projection, StarDist labels, watershed seeds and separated nuclei | Nuclear crops, object masks and within-mask intensity partitions |
+| ![Fluorescence nuclear segmentation stages](assets/results/fluorescence-nucleus-segmentation.png) | ![Nuclear mask and intensity partition examples](assets/results/nucleus-intensity-partition.png) |
+
+Dense intranuclear regions form a second segmentation scale: local chromatin
+domains become typed nodes and edges while remaining linked to the parent
+nucleus.
+
+![Dense-region segmentation and graph construction](assets/results/dense-region-graph.png)
+
 ## Follow the workflow
 
 The notebooks are ordered so that every stage introduces one methodological
@@ -15,7 +33,7 @@ representative visual result.
 | Notebook | Focus | Result |
 | --- | --- | --- |
 | `00_workflow_overview.ipynb` | Analysis design and data flow | End-to-end map |
-| `01_images_and_segmentation.ipynb` | Image inspection and 2D/3D segmentation | Label progression |
+| `01_images_and_segmentation.ipynb` | Image inspection and 2D/3D segmentation | Modality-specific label checks |
 | `02_object_and_radial_features.ipynb` | Morphology, intensity, texture and radial measurements | Feature interpretation |
 | `03_spatial_graphs.ipynb` | Dense-region graphs and temporal node tracking | Spatial representation |
 | `04_vae_representations.ipynb` | VAE/CVAE embeddings of nuclear crops | Latent embedding |
@@ -55,11 +73,11 @@ Open the notebooks with JupyterLab:
 jupyter lab notebooks/
 ```
 
-## Example results
+## Representation and analysis outputs
 
-| Segmentation | Feature-space structure |
+| Learned image representation | Analysis-ready feature matrix |
 | --- | --- |
-| ![Original image, labels and expanded objects](assets/results/segmentation-progression.png) | ![Feature embedding](assets/results/feature-embedding.png) |
+| ![CVAE latent features and reconstruction error](assets/results/vae-latent-diagnostics.png) | ![Standardized feature heatmap](assets/results/screening-heatmap.png) |
 
 The method packages can also be used independently in experiment-specific
 scripts and notebooks.

@@ -1,4 +1,5 @@
 import ast
+from collections import Counter
 import json
 import re
 from pathlib import Path
@@ -33,3 +34,17 @@ def test_all_markdown_result_assets_exist():
         for relative in links:
             asset = (path.parent / relative).resolve()
             assert asset.is_file() and asset.stat().st_size > 0
+
+
+def test_reference_results_are_not_reused_between_notebooks():
+    references = []
+    for path in (ROOT / "notebooks").glob("[0-9][0-9]_*.ipynb"):
+        notebook = json.loads(path.read_text(encoding="utf-8"))
+        source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+        references.extend(
+            relative
+            for relative in re.findall(r"!\[[^]]*\]\(([^)]+)\)", source)
+            if "/assets/results/" in relative
+        )
+    duplicates = [reference for reference, count in Counter(references).items() if count > 1]
+    assert duplicates == []
