@@ -1,0 +1,5 @@
+{
+  "nbins-sph": 20,
+  "maxdist-sph-shell": 400,
+  "maxdist-sph-outward": 400
+}

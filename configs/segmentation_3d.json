@@ -1,0 +1,10 @@
+{
+  "analysis_mode": "3D",
+  "segmentation_method": "multiotsu",
+  "stardist_model_name": "2D_versatile_fluo",
+  "enhance": false,
+  "blocksize": 1024,
+  "gamma": 0.7,
+  "min_size": 100,
+  "big_image_size_threshold": 2000
+}

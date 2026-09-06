@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Quantitative microscopy analysis workflow</title>
+  <desc id="desc">Six connected stages from microscopy images to figures.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#506784"/></marker>
+    <style>.title{font:700 28px Arial,sans-serif;fill:#0b132b}.label{font:700 18px Arial,sans-serif;fill:#0b132b}.detail{font:14px Arial,sans-serif;fill:#344966}.line{stroke:#506784;stroke-width:3;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1200" height="320" rx="22" fill="#f7fafc"/>
+  <text x="48" y="52" class="title">From microscopy images to interpretable results</text>
+  <g transform="translate(35 95)">
+    <g><rect width="165" height="150" rx="18" fill="#dcecff" stroke="#247ba0" stroke-width="2"/><text x="82" y="48" text-anchor="middle" class="label">Images</text><text x="82" y="78" text-anchor="middle" class="detail">2D · 3D · RGB</text><text x="82" y="101" text-anchor="middle" class="detail">multichannel</text></g>
+    <line x1="170" y1="75" x2="198" y2="75" class="line"/>
+    <g transform="translate(205)"><rect width="165" height="150" rx="18" fill="#d9f7ef" stroke="#2a9d8f" stroke-width="2"/><text x="82" y="48" text-anchor="middle" class="label">Segment</text><text x="82" y="78" text-anchor="middle" class="detail">nuclei · spheroids</text><text x="82" y="101" text-anchor="middle" class="detail">dense regions</text></g>
+    <line x1="375" y1="75" x2="403" y2="75" class="line"/>
+    <g transform="translate(410)"><rect width="165" height="150" rx="18" fill="#fff1cc" stroke="#f4a261" stroke-width="2"/><text x="82" y="48" text-anchor="middle" class="label">Measure</text><text x="82" y="78" text-anchor="middle" class="detail">shape · texture</text><text x="82" y="101" text-anchor="middle" class="detail">intensity · radial</text></g>
+    <line x1="580" y1="75" x2="608" y2="75" class="line"/>
+    <g transform="translate(615)"><rect width="165" height="150" rx="18" fill="#fce1e8" stroke="#ef476f" stroke-width="2"/><text x="82" y="48" text-anchor="middle" class="label">Represent</text><text x="82" y="78" text-anchor="middle" class="detail">graphs</text><text x="82" y="101" text-anchor="middle" class="detail">VAE · CVAE</text></g>
+    <line x1="785" y1="75" x2="813" y2="75" class="line"/>
+    <g transform="translate(820)"><rect width="165" height="150" rx="18" fill="#e8e2fa" stroke="#7b61a8" stroke-width="2"/><text x="82" y="48" text-anchor="middle" class="label">Analyze</text><text x="82" y="78" text-anchor="middle" class="detail">filter · join</text><text x="82" y="101" text-anchor="middle" class="detail">cluster · compare</text></g>
+    <line x1="990" y1="75" x2="1018" y2="75" class="line"/>
+    <g transform="translate(1025)"><rect width="140" height="150" rx="18" fill="#e6f4d7" stroke="#6a994e" stroke-width="2"/><text x="70" y="48" text-anchor="middle" class="label">Explain</text><text x="70" y="78" text-anchor="middle" class="detail">QC · figures</text><text x="70" y="101" text-anchor="middle" class="detail">interpretation</text></g>
+  </g>
+</svg>

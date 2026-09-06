@@ -1,0 +1,23 @@
+name: Static validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile Python sources
+        run: python -m compileall -q src tests
+      - name: Validate notebooks and assets
+        run: |
+          python -c "import runpy; d=runpy.run_path('tests/test_notebook_structure.py'); d['test_walkthrough_notebooks_have_clear_progression_and_valid_code'](); d['test_all_markdown_result_assets_exist']()"
+          python -c "import runpy; d=runpy.run_path('tests/test_assets.py'); d['test_result_images_are_valid_png_files'](); d['test_diagrams_are_valid_svg_files']()"

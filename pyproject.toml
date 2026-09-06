@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microscopy-analysis-workflows"
+version = "0.1.0"
+description = "Notebook walkthroughs for quantitative microscopy image analysis"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "ipython",
+  "jupyterlab",
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "pillow",
+  "seaborn",
+  "tifffile",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
