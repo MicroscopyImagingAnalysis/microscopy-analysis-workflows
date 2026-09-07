@@ -6,6 +6,22 @@ learned representations and analysis-ready tables.
 
 ![Microscopy analysis workflow](assets/diagrams/workflow-overview.svg)
 
+## Four run modes
+
+Each route keeps the scientific hand-off explicit: image arrays become masks,
+label images or identity-preserving tables that the next stage can consume.
+
+| Starting data | Package and main call chain | Hand-off | Example | Walkthrough |
+| --- | --- | --- | --- | --- |
+| 2D fluorescence image or 3D stack | `nuclear-imaging-core`: `segment_frame()` → `region_feature_table()` | Label image, foreground mask and object table | [`01_segment_images.py`](examples/01_segment_images.py) | [`01_images_and_segmentation.ipynb`](notebooks/01_images_and_segmentation.ipynb) |
+| Nuclear and spheroid label images | `nuclear-spheroid-analysis`: `measure_spheroid_system()` → `analyze_radial_2d/3d()` | Nuclear, spheroid and radial tables | [`02_spheroid_radial_analysis.py`](examples/02_spheroid_radial_analysis.py) | [`02_object_and_radial_features.ipynb`](notebooks/02_object_and_radial_features.ipynb) |
+| Ordered nuclear crops | `nuclear-imaging-core.graph`: dense-region segmentation → graph construction → tracking | Node, edge, graph-summary and tracking tables | [`03_spatial_graph_analysis.py`](examples/03_spatial_graph_analysis.py) | [`03_spatial_graphs.ipynb`](notebooks/03_spatial_graphs.ipynb) |
+| Normalized nuclear crops and an existing split manifest | `nuclear-vae-embeddings`: `fit_vae()` → `reconstruct_images()` → `latent_feature_table()` | Reconstructions and learned-feature table | [`04_vae_representations.py`](examples/04_vae_representations.py) | [`04_vae_representations.ipynb`](notebooks/04_vae_representations.ipynb) |
+
+All four scripts keep imports together at the head and accept caller-owned paths.
+They write runtime artifacts only to the requested output directory. See the
+[`examples` guide](examples/README.md) for their input contracts.
+
 ## Segmentation tasks
 
 | Brightfield spheroids | RGB transmitted-light spheroids |
